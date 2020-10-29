@@ -64,7 +64,7 @@ end
 
 -- Entrypoint
 
-if not refuel() then
+if not turtle.refuel() then
     print("Turtle refuel: FAIL")
     return false
 end
