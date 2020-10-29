@@ -28,5 +28,4 @@ local success, data = turtle.inspect()
 if success then
     print("Block name:", data.name)
     print("Metadata", data.metadata)
-    print(data)
 end
