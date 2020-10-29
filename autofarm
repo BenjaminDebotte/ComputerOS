@@ -20,11 +20,11 @@ local function moveFarm(farm)
     end
 end
 
-local function digDown() then
+local function digDown()
     print("Dig: "..tostring(turtle.digDown()))
 end
 
-local function placeDown() then
+local function placeDown()
     print("Dig: "..tostring(turtle.digDown()))
 end
 
