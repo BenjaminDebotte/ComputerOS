@@ -1,7 +1,7 @@
 MINIMUM_FUEL_LEVEL=12
 RIGHT=0
 LEFT=1
-X=7
+X=8
 Y=8
 local function refuel()
     if turtleNeedFuel == 0 then
@@ -51,16 +51,13 @@ print("Turtle refueld.")
 
 moveFarm(true)
 turtle.turnRight()
-moveFarm(true)
-for x = 1, X-1 do
+for x = 1, X/2 do
+    moveFarm(true)
     nextRow(RIGHT)
     moveFarm(true)
     nextRow(LEFT)
-    moveFarm(true)
 end
 
-nextRow(RIGHT)
-moveFarm(false)
-turtle.turnRight()
+turtle.turnLeft()
 
 turle.back()
