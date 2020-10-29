@@ -10,6 +10,15 @@ local function refuel()
     return turtle.refuel()
 end
 
+local function digDown()
+    print("Dig: "..tostring(turtle.digDown()))
+end
+
+local function placeDown()
+    print("Dig: "..tostring(turtle.digDown()))
+end
+
+
 local function moveFarm(farm)
     if farm then
         digDown()
@@ -20,13 +29,6 @@ local function moveFarm(farm)
     end
 end
 
-local function digDown()
-    print("Dig: "..tostring(turtle.digDown()))
-end
-
-local function placeDown()
-    print("Dig: "..tostring(turtle.digDown()))
-end
 
 
 local function nextRow(direction)
