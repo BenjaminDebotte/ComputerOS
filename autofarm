@@ -12,27 +12,36 @@ end
 
 local function moveFarm(farm)
     if farm then
-        print("Dig: "..tostring(turtle.digDown()))
-        print("PlaceDown: "..tostring(turtle.placeDown()))
+        digDown()
+        placeDown()
     end
     while turtle.forward() do
         sleep(1)
     end
 end
 
+local function digDown() then
+    print("Dig: "..tostring(turtle.digDown()))
+end
+
+local function placeDown() then
+    print("Dig: "..tostring(turtle.digDown()))
+end
+
+
 local function nextRow(direction)
     if direction == RIGHT then
         turtle.turnRight()
         turtle.forward()
-        turtle.digDown()
-        turtle.placeDown()
+        digDown()
+        placeDown()
         turtle.turnRight()
     end
     if direction == LEFT then
         turtle.turnLeft()
         turtle.forward()
-        print("Dig: "..tostring(turtle.digDown()))
-        print("PlaceDown: "..tostring(turtle.placeDown()))
+        digDown()
+        placeDown()
         turtle.turnLeft()
     end
 
@@ -48,7 +57,7 @@ end
 print("Turtle refueld.")
 
 -- Here it starts --
-
+turtle.down()
 moveFarm(true)
 turtle.turnRight()
 for x = 1, X/2 do
@@ -57,7 +66,6 @@ for x = 1, X/2 do
     moveFarm(true)
     nextRow(LEFT)
 end
-
+turtle.up()
 turtle.turnLeft()
-
-turle.back()
+turtle.back()
