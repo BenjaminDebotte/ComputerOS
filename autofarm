@@ -15,29 +15,32 @@ local function digDown()
 end
 
 local function placeDown()
-
+    print("Trying placing")
     for i = 1,16 do
         turtle.select(i)
         if turtle.placeDown() then
-            print("Placing "..tostring(i))
+            print("OK "..tostring(i))
             break
         end
     end
 
 end
 
-
-local function moveForward()
+local function dd()
     if turtle.detectDown() then
         print("Block detected.")
     end
 
     if turtle.attackDown() then
-        print("Attached down")
+        print("Attacked down")
     end
 
     digDown()
     placeDown()
+end
+
+local function moveForward()
+    dd()
     while turtle.forward() do
         sleep(1)
     end
@@ -49,17 +52,13 @@ local function nextRow(direction)
     if direction == RIGHT then
         turtle.turnRight()
         turtle.forward()
-        turtle.attackDown()
-        digDown()
-        placeDown()
+        dd()
         turtle.turnRight()
     end
     if direction == LEFT then
         turtle.turnLeft()
         turtle.forward()
-        turtle.attackDown()
-        digDown()
-        placeDown()
+        dd()
         turtle.turnLeft()
     end
 
