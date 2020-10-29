@@ -19,10 +19,9 @@ local function placeDown()
 end
 
 
-local function moveFarm(farm)
+local function moveFarm()
     digDown()
     placeDown()
-
     while turtle.forward() do
         sleep(1)
     end
@@ -59,12 +58,12 @@ print("Turtle refueld.")
 
 -- Here it starts --
 
-moveFarm(true)
+moveFarm()
 turtle.turnRight()
 for x = 1, X/2 do
-    moveFarm(true)
+    moveFarm()
     nextRow(RIGHT)
-    moveFarm(true)
+    moveFarm()
     nextRow(LEFT)
 end
 
