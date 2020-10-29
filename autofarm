@@ -30,7 +30,10 @@ end
 local function moveForward()
     if turtle.detectDown() then
         print("Block detected.")
-        turtle.attackDown()
+    end
+
+    if turtle.attackDown() then
+        print("Attached down")
     end
 
     digDown()
