@@ -59,6 +59,7 @@ end
 print("Turtle refueld.")
 
 -- Here it starts --
+turtle.forward()
 turtle.down()
 moveFarm(true)
 turtle.turnRight()
