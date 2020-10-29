@@ -27,24 +27,13 @@ local function placeDown()
 end
 
 local function dd()
-    if turtle.down() then turtle.up() end
-
-    if turtle.detectDown() then
-        print("Block detected.")
-    end
-
-    if turtle.attackDown() then
-        print("Attacked down")
-    end
-
     digDown()
     placeDown()
 end
 
 local function moveForward()
-    dd()
     while turtle.forward() do
-        sleep(1)
+        dd()
     end
 end
 
