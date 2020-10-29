@@ -19,6 +19,7 @@ local function placeDown()
     for i = 1,16 do
         turtle.select(i)
         if turtle.placeDown() then
+            print("Placing "..tostring(i))
             break
         end
     end
@@ -26,8 +27,12 @@ local function placeDown()
 end
 
 
-local function moveFarm()
-    if turtle.detectDown() then print("Block detected.") end
+local function moveForward()
+    if turtle.detectDown() then
+        print("Block detected.")
+        turtle.attackDown()
+    end
+
     digDown()
     placeDown()
     while turtle.forward() do
@@ -41,6 +46,7 @@ local function nextRow(direction)
     if direction == RIGHT then
         turtle.turnRight()
         turtle.forward()
+        turtle.attackDown()
         digDown()
         placeDown()
         turtle.turnRight()
@@ -48,6 +54,7 @@ local function nextRow(direction)
     if direction == LEFT then
         turtle.turnLeft()
         turtle.forward()
+        turtle.attackDown()
         digDown()
         placeDown()
         turtle.turnLeft()
@@ -66,12 +73,12 @@ print("Turtle refueld.")
 
 -- Here it starts --
 
-moveFarm()
+moveForward()
 turtle.turnRight()
 for x = 1, X/2 do
-    moveFarm()
+    moveForward()
     nextRow(RIGHT)
-    moveFarm()
+    moveForward()
     nextRow(LEFT)
 end
 
