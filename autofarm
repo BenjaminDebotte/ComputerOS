@@ -51,7 +51,7 @@ turtle.down()
 
 -- Here it starts --
 
-goForward()
+moveFarm(true)
 turtle.turnRight()
 moveFarm(true)
 for x = 1, X-1 do
