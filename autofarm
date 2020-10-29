@@ -46,8 +46,6 @@ if not refuel() then
 end
 
 print("Turtle refueld.")
-turtle.forward()
-turtle.down()
 
 -- Here it starts --
 
@@ -64,5 +62,5 @@ end
 nextRow(RIGHT)
 moveFarm(false)
 turtle.turnRight()
-turtle.up()
-turle.backward()
+
+turle.back()
