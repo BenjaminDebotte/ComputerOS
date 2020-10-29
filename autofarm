@@ -15,15 +15,14 @@ local function digDown()
 end
 
 local function placeDown()
-    print("Dig: "..tostring(turtle.digDown()))
+    print("Place: "..tostring(turtle.placeDown()))
 end
 
 
 local function moveFarm(farm)
-    if farm then
-        digDown()
-        placeDown()
-    end
+    digDown()
+    placeDown()
+
     while turtle.forward() do
         sleep(1)
     end
@@ -59,8 +58,7 @@ end
 print("Turtle refueld.")
 
 -- Here it starts --
-turtle.forward()
-turtle.down()
+
 moveFarm(true)
 turtle.turnRight()
 for x = 1, X/2 do
@@ -69,6 +67,5 @@ for x = 1, X/2 do
     moveFarm(true)
     nextRow(LEFT)
 end
-turtle.up()
+
 turtle.turnLeft()
-turtle.back()
