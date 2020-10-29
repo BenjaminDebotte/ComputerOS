@@ -1,17 +1,44 @@
 MINIMUM_FUEL_LEVEL=12
-
-function refuel()
+RIGHT=0
+LEFT=1
+X=7
+Y=8
+local function refuel()
     if turtleNeedFuel == 0 then
         return true;
     end
     return turtle.refuel()
 end
 
-function goForward()
-    while not turtle.detect() do
-        turtle.forward()
+local function moveFarm(farm)
+    if farm then
+        turtle.digDown()
+        turtle.placeDown()
+    end
+    while turtle.forward() do
+        sleep(1)
     end
 end
+
+local function nextRow(direction)
+    if direction == RIGHT then
+        turtle.turnRight()
+        turtle.forward()
+        turtle.digDown()
+        turtle.placeDown()
+        turtle.turnRight()
+    end
+    if direction == LEFT then
+        turtle.turnLeft()
+        turtle.forward()
+        turtle.digDown()
+        turtle.placeDown()
+        turtle.turnLeft()
+    end
+
+end
+
+-- Entrypoint
 
 if not refuel() then
     print("Turtle refuel: FAIL")
@@ -22,10 +49,22 @@ print("Turtle refueld.")
 turtle.forward()
 turtle.down()
 
-goForward()
+-- Here it starts --
 
-local success, data = turtle.inspect()
-if success then
-    print("Block name:", data.name)
-    print("Metadata", data.metadata)
+goForward()
+turtle.turnRight()
+moveFarm(true)
+for x = 1, X-1 do
+    nextRow(RIGHT)
+    moveFarm(true)
+    nextRow(LEFT)
+    moveFarm(true)
 end
+
+nextRow(RIGHT)
+moveFarm(false)
+turtle.turnLeft()
+turtle.up()
+turle.forward()
+turtle.turnLeft()
+turtle.turLeft()
