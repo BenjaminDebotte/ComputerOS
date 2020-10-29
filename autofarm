@@ -15,11 +15,19 @@ local function digDown()
 end
 
 local function placeDown()
-    print("Place: "..tostring(turtle.placeDown()))
+
+    for i = 1,16 do
+        turtle.select(i)
+        if turtle.placeDown() then
+            break
+        end
+    end
+
 end
 
 
 local function moveFarm()
+    if turtle.detectDown() then print("Block detected.") end
     digDown()
     placeDown()
     while turtle.forward() do
