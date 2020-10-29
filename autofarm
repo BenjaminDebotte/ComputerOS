@@ -63,8 +63,6 @@ end
 
 nextRow(RIGHT)
 moveFarm(false)
-turtle.turnLeft()
+turtle.turnRight()
 turtle.up()
-turle.forward()
-turtle.turnLeft()
-turtle.turLeft()
+turle.backward()
