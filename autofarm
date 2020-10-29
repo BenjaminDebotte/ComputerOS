@@ -27,6 +27,8 @@ local function placeDown()
 end
 
 local function dd()
+    if turtle.down() then turtle.up() end
+
     if turtle.detectDown() then
         print("Block detected.")
     end
