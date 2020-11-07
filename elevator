@@ -1,0 +1,77 @@
+CONTROLER_ID="JAKJ_RIM_CarriageController"
+SIDES=[ "front", "back", "left", "right", "top", "bottom"]
+FLOOR_MAX=4
+FLOOR_MIN=0
+FLOOR_CURRENT=nil
+FLOOR_HEIGHT_DELTA=7
+CONTROLER=nil
+
+-- https://sites.google.com/site/unabridgedmodpack/wikis/redstone-in-motion
+CONTROLER_DOWN = 0
+CONTROLER_UP = 1
+CONTROLER_SIMULATE = false
+CONTROLER_ANCHOR = true
+
+
+
+local function setControler(id)
+    for side in sides do
+        if peripherical.getType(side) == id then
+            CONTROLER = peripheral.wrap(side)
+        end
+    end
+end
+
+local function reinitialize()
+    for i = FLOOR_MAX, FLOOR_MIN, -1 do
+        goPreviousFloor()
+    end
+    FLOOR_CURRENT = FLOOR_MIN
+end
+
+local function goUp()
+    CONTROLER.move(CONTROLER_UP, CONTROLER_SIMULATE, CONTROLER_ANCHOR)
+    sleep(1)
+end
+
+local function goDown()
+    CONTROLER.move(CONTROLER_DOWN, CONTROLER_SIMULATE, CONTROLER_ANCHOR)
+    sleep(1)
+end
+
+local function goNextFloor()
+    for i = 0, FLOOR_HEIGHT_DELTA, 1 do
+        goUp()
+    end
+end
+
+local function goPreviousFloor()
+    for i = 0, FLOOR_HEIGHT_DELTA, 1 do
+        goDown()
+    end
+end
+
+local function goToFloor(floor)
+    local delta = floor - CURRENT_FLOOR
+    if delta > 0 then
+        for i = 0, delta, 1 do
+            goNextFloor()
+        end
+    else
+        for i = 0, math.abs(delta), 1 do
+            goPreviousFloor()
+        end
+    end
+end
+    
+
+setControler(CONTROLER_ID)
+reinitialize()
+
+while true do
+    term.clear()
+    term.setCursorPos(1,1)
+    print(string.format("Please enter floor number (%d-%d):",FLOOR_MIN, FLOOR_MAX))
+    local input = tonumber(read())
+    goToFloor(input)
+
